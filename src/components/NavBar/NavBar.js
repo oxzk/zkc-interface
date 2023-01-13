@@ -1,13 +1,17 @@
 import * as React from "react";
 
 import Toolbar from "@mui/material/Toolbar";
-import SvgIcon from "@mui/material/SvgIcon";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
+import Link from '@mui/material/Link';
+import { useNavigate } from "react-router-dom";
+import { IconButton } from "@mui/material";
 
-import { styled, alpha } from "@mui/material/styles";
+import { styled, alpha } from "@mui/material/styles"
+
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,10 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-      <HomeIcon fontSize="large" />
-
+      <IconButton onClick = {() => {navigate("/")}}><HomeWorkIcon></HomeWorkIcon>zkCredential</IconButton>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
@@ -65,8 +69,9 @@ const NavBar = () => {
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
-      <Button variant="text"> Explore </Button>
-      <Button variant="text"> Create </Button>
+
+      <Link href="explore-nft" underline="none" variant="button" mr={2} ml={4}>Exlore </Link>
+      <Link href="create-collection" underline="none" variant="button">Create</Link>
 
       <Box sx={{ flexGrow: 1 }} />
       <Button
@@ -75,19 +80,12 @@ const NavBar = () => {
           borderRadius: 3,
           backgroundColor: "black",
         }}
+        onClick = {() => {navigate("/")}}
       >
         Connect Wallet
       </Button>
     </Toolbar>
   );
 };
-
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
 
 export default NavBar;

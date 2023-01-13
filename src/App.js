@@ -1,25 +1,29 @@
-import AdvertisePage from "./components/AdvertisePage/AdvertisePage";
 import NavBar from "./components/NavBar/NavBar";
-import { Box } from "@mui/system";
+import { Container } from "@mui/material";
+import * as React from "react";
+import { Outlet } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-       <NavBar></NavBar>
-        <br/>
-        <br/>
-        <br/>
+import { PageType } from "./components/PageType";
 
-      <Box sx={{
-         flexGrow: 1,
-      }}>
-     
-        <AdvertisePage></AdvertisePage>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      page: PageType.Advertise,
+    };
+  }
 
-      </Box>
-      
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <NavBar></NavBar>
+
+        <Container sx={{ py: 6 }}>
+          <Outlet></Outlet>
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default App;
