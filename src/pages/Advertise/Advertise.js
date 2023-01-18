@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
+import { Container } from "@mui/material";
 
 import * as React from "react";
 import BannerStepper from "./BannerStepper";
@@ -28,7 +29,11 @@ const LeftPage = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="large" bgcolor="theme.palette.primary.dark">
+        <Button
+          variant="contained"
+          size="large"
+          bgcolor="theme.palette.primary.dark"
+        >
           Explore
         </Button>
       </CardActions>
@@ -42,25 +47,27 @@ const RightPage = () => {
 
 const Advertise = () => {
   return (
-    <Grid
-      container
-      direction="row"
-      alignItems="center"
-      spacing={2}
-      sx={{
-        height: "512px",
-        bgcolor: "#ede7f6",
-        borderRadius: 2,
-        maxWidth: "xl",
-      }}
-    >
-      <Grid item xs={8}>
-        <LeftPage> </LeftPage>
+    <Container sx={{ py: 12 }}>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        spacing={2}
+        sx={{
+          height: "728px",
+          bgcolor: "#ede7f6",
+          borderRadius: 2,
+          maxWidth: "xl",
+        }}
+      >
+        <Grid item xs={8}>
+          <LeftPage> </LeftPage>
+        </Grid>
+        <Grid item xs={4}>
+          <RightPage></RightPage>
+        </Grid>
       </Grid>
-      <Grid item xs={4}>
-        <RightPage></RightPage>
-      </Grid>
-    </Grid>
+    </Container>
   );
 };
 

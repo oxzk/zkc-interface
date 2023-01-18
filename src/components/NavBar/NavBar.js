@@ -5,13 +5,13 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { AppBar, IconButton } from "@mui/material";
 
-import { styled, alpha } from "@mui/material/styles"
+import { styled, alpha } from "@mui/material/styles";
 
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,33 +58,55 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-      <IconButton onClick = {() => {navigate("/")}}><HomeWorkIcon></HomeWorkIcon>zkCredential</IconButton>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search web3 …"
-          inputProps={{ "aria-label": "search" }}
-        />
-      </Search>
+    <AppBar sx={{
+      enableColorOnDark:true,
+      bgcolor:"white",
+    }}>
+      <Toolbar  disableGutters>
+        <IconButton
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <HomeWorkIcon></HomeWorkIcon>zkCredential
+        </IconButton>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search web3 …"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
 
-      <Link href="explore-nft" underline="none" variant="button" mr={2} ml={4}>Exlore </Link>
-      <Link href="create-collection" underline="none" variant="button">Create</Link>
+        <Link
+          href="explore-nft"
+          underline="none"
+          variant="button"
+          mr={2}
+          ml={4}
+        >
+          Exlore{" "}
+        </Link>
+        <Link href="create-collection" underline="none" variant="button">
+          Create
+        </Link>
 
-      <Box sx={{ flexGrow: 1 }} />
-      <Button
-        variant="contained"
-        sx={{
-          borderRadius: 3,
-          backgroundColor: "black",
-        }}
-        onClick = {() => {navigate("/")}}
-      >
-        Connect Wallet
-      </Button>
-    </Toolbar>
+        <Box sx={{ flexGrow: 1 }} />
+        <Button
+          variant="outlined"
+          sx={{
+            borderRadius: 3,
+          }}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Connect Wallet
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 };
 

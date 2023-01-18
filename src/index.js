@@ -9,7 +9,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import CreateCollection from './pages/CreateCollection';
+import CreateCollection from './pages/CreateCollection/CreateCollection';
 import Advertise from './pages/Advertise/Advertise';
 import ExploreNFT from './pages/ExploreNFT';
 

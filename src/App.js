@@ -1,5 +1,4 @@
 import NavBar from "./components/NavBar/NavBar";
-import { Container } from "@mui/material";
 import * as React from "react";
 import { Outlet } from "react-router-dom";
 
@@ -17,10 +16,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar></NavBar>
-
-        <Container sx={{ py: 6 }}>
-          <Outlet></Outlet>
-        </Container>
+        <Outlet></Outlet>
+         
       </div>
     );
   }
