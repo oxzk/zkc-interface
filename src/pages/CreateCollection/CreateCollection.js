@@ -1,12 +1,15 @@
 import { Container, Typography, Box, CssBaseline } from "@mui/material";
-import * as React from 'react';
+import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
+import { Upload } from "@web3uikit/core";
 
 const CreateCollection = () => {
-  const [blockchain, setBlockchain] = React.useState('Goerli');
+  const [blockchain, setBlockchain] = React.useState("Goerli");
+  const [logoImage, setLogoImage] = React.useState(null);
 
   const handleChange = (event) => {
     setBlockchain(event.target.value);
@@ -15,11 +18,19 @@ const CreateCollection = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // TODO: post data to the backend server
-    console.log({
-      name: data.get('name'),
-      description: data.get('description'),
-    });
+    // // TODO: post data to the backend server
+    // console.log({
+    //   name: data.get("name"),
+    //   description: data.get("description"),
+    //   file: data.get("file").name,
+    // });
+
+    alert(data.get("file").name);
+  };
+
+  const handleOnchangeFile = (file) => {
+    setLogoImage(file);
+    alert(file.name);
   };
 
   return (
@@ -29,10 +40,11 @@ const CreateCollection = () => {
       }}
     >
       <Box
-        component="form" noValidate onSubmit={handleSubmit}
+        component="form"
+        noValidate
+        onSubmit={handleSubmit}
         sx={{
           py: 24,
-          // bgcolor: "#cfe8fc",
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -46,22 +58,29 @@ const CreateCollection = () => {
           This image will also be used for navigation 350 * 350 recommended.
         </Typography>
 
-        <Button variant="contained" component="label">
-          LogoImage
-          <input hidden accept="image/*" multiple type="file" />
-        </Button>
+        <Box
+          sx={{
+            width: "250px",
+          }}
+        >
+          <Upload onChange={handleOnchangeFile} id="pic"></Upload>
+        </Box>
 
         <Typography variant="subtitle1" gutterBottom>
           Featured image
         </Typography>
         <Typography variant="body2" gutterBottom>
-          This image will be sused for featuring
+          This image will be sused for featuring your collection on the
+          homepage. categary pages or other promotional areas of zkCredential
         </Typography>
 
-        <Button variant="contained" component="label">
-          FeaturedImage
-          <input hidden accept="image/*" multiple type="file" />
-        </Button>
+        <Box
+          sx={{
+            width: "600px",
+          }}
+        >
+          <Upload descriptionText="600 * 400 recommended" style={{}}></Upload>
+        </Box>
 
         <Typography variant="subtitle1" gutterBottom>
           Banner image
@@ -72,20 +91,27 @@ const CreateCollection = () => {
           on different devices 1400 * 350 recommended.
         </Typography>
 
-        <Button variant="contained" component="label">
-          Banner Image
-          <input hidden accept="image/*" multiple type="file" />
-        </Button>
+        <Box
+          sx={{
+            width: "1400px",
+          }}
+        >
+          <Upload descriptionText="1400 * 350 recommended"></Upload>
+        </Box>
 
         <Typography variant="subtitle1" gutterBottom>
           Name *
         </Typography>
 
-        <TextField id="name" label="Name" variant="outlined" name="name"  sx={
-          {
-            width:"50%",
-          }
-        }/>
+        <TextField
+          id="name"
+          label="Name"
+          variant="outlined"
+          name="name"
+          sx={{
+            width: "50%",
+          }}
+        />
 
         <Typography variant="subtitle1" gutterBottom>
           Description
@@ -101,7 +127,7 @@ const CreateCollection = () => {
           rows={4}
           defaultValue="Collection description ..."
           sx={{
-            width:"80%"
+            width: "80%",
           }}
         />
 
@@ -109,7 +135,8 @@ const CreateCollection = () => {
           Blockchain
         </Typography>
         <Typography variant="body2" gutterBottom>
-          Select the blockchain where you'd like new items from this collection to be added by default.
+          Select the blockchain where you'd like new items from this collection
+          to be added by default.
         </Typography>
 
         <Select
@@ -118,18 +145,19 @@ const CreateCollection = () => {
           value={blockchain}
           label="Blockchain"
           onChange={handleChange}
-          sx={{width: "128px",}}
+          sx={{ width: "128px" }}
         >
-          <MenuItem >Goerli</MenuItem>
-          <MenuItem >Ethereum</MenuItem>
-          <MenuItem >Polygon</MenuItem>
+          <MenuItem>Goerli</MenuItem>
+          <MenuItem>Ethereum</MenuItem>
+          <MenuItem>Polygon</MenuItem>
         </Select>
-        
+
         <CssBaseline></CssBaseline>
         <br></br>
         <br></br>
-        <Button type="submit" variant="contained" >Create Collection</Button>
-
+        <Button type="submit" variant="contained">
+          Create Collection
+        </Button>
       </Box>
     </Container>
   );
