@@ -58,11 +58,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <AppBar sx={{
-      enableColorOnDark:true,
-      bgcolor:"white",
-    }}>
-      <Toolbar  disableGutters>
+    <AppBar
+      sx={{
+        enableColorOnDark: true,
+        bgcolor: "white",
+      }}
+    >
+      <Toolbar disableGutters>
         <IconButton
           onClick={() => {
             navigate("/");
@@ -80,14 +82,8 @@ const NavBar = () => {
           />
         </Search>
 
-        <Link
-          href="explore-nft"
-          underline="none"
-          variant="button"
-          mr={2}
-          ml={4}
-        >
-          Exlore{" "}
+        <Link href="explore" underline="none" variant="button" mr={2} ml={4}>
+          Exlore
         </Link>
         <Link href="create-collection" underline="none" variant="button">
           Create

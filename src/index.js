@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import CreateCollection from './pages/CreateCollection/CreateCollection';
 import Advertise from './pages/Advertise/Advertise';
-import ExploreNFT from './pages/ExploreNFT';
+import Collection from './pages/Explore/Collections/Collection';
 
 
 function MainPage() {
@@ -21,7 +21,7 @@ function MainPage() {
       <Route path='/' element = {<App/>}>
         <Route index element = {<Advertise/>}/>
         <Route path='create-collection' element = {<CreateCollection/>}/>
-        <Route path='explore-nft' element = {<ExploreNFT/>}/>
+        <Route path='explore' element = {<Collection/>}/>
       </Route>
       
     </Routes>
