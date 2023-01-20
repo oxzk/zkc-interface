@@ -94,6 +94,7 @@ const NavBar = () => {
           variant="outlined"
           sx={{
             borderRadius: 3,
+            mr: 2,
           }}
           onClick={() => {
             navigate("/");
