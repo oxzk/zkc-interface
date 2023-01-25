@@ -9,7 +9,7 @@ import { Upload } from "@web3uikit/core";
 
 const CreateCollection = () => {
   const [blockchain, setBlockchain] = React.useState("Goerli");
-  const [logoImage, setLogoImage] = React.useState(null);
+  const [ setLogoImage] = React.useState(null);
 
   const handleChange = (event) => {
     setBlockchain(event.target.value);
