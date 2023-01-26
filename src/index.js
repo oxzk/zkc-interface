@@ -13,9 +13,20 @@ import CreateCollection from './pages/CreateCollection/CreateCollection';
 import Advertise from './pages/Advertise/Advertise';
 import Collection from './pages/Explore/Collections/Collection';
 
+import { Web3ContextProvider } from "./store/Web3Provider";
+import { Web3ReactProvider } from "@web3-react/core";
+import { providers } from 'ethers';
+
+const getWeb3Library = (provider) =>  {
+  const library = new providers.Web3Provider(provider);
+  library.pollingInterval = 12000;
+  return library;
+}
 
 function MainPage() {
   return (
+    <Web3ReactProvider  getLibrary={getWeb3Library}>
+    <Web3ContextProvider>
     <BrowserRouter>
     <Routes>
       <Route path='/' element = {<App/>}>
@@ -26,6 +37,8 @@ function MainPage() {
       
     </Routes>
     </BrowserRouter>
+    </Web3ContextProvider>
+    </Web3ReactProvider>
   )
 }
 

@@ -1,16 +1,16 @@
 import * as React from "react";
-
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/system";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
-import { AppBar, IconButton } from "@mui/material";
+import { AppBar, IconButton, useMediaQuery } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
 
-import { ConnectWalletButton } from "../ConnectWalletButton/ConnectWalletButton";
+import { WalletWidget } from "./WalletWidget";
+import { useEffect, useState } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,6 +56,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const [walletWidgetOpen, setWalletWidgetOpen] = useState(false);
+
+  useEffect(() => {
+    // if (walletWidgetOpen) {
+    //    setWalletWidgetOpen(false);
+    // }
+  });
 
   return (
     <AppBar
@@ -91,7 +98,10 @@ const NavBar = () => {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <ConnectWalletButton></ConnectWalletButton>
+        <WalletWidget
+          open={walletWidgetOpen}
+          setOpen={setWalletWidgetOpen}
+        ></WalletWidget>
       </Toolbar>
     </AppBar>
   );
