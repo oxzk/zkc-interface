@@ -1,31 +1,39 @@
-import { Container, Typography, Box, CssBaseline } from "@mui/material";
+import { Container, Typography, Box, CssBaseline, CircularProgress } from "@mui/material";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Upload } from "@web3uikit/core";
+import { useNavigate } from "react-router-dom";
 
 import { useWeb3Context } from "../../hooks/useWeb3Context";
-import { ethers, ContractFactory } from "ethers";
+import { ethers} from "ethers";
 
 const CreateCollection = () => {
+  const navigate = useNavigate();
   const [blockchain, setBlockchain] = React.useState(5);
-  const [setLogoImage] = React.useState(null);
+  const [deploying, setDeploying] = React.useState(false);
+  const [logo, setLogoImage] = React.useState(null);
+  const { connected, provider } = useWeb3Context();
 
   const handleChange = (event) => {
     setBlockchain(event.target.value);
   };
 
-  const { currentAccount, connected, provider } = useWeb3Context();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // alert(data.get("file").name);
-
     const contractName = "ERC721Pri";
-    deploy(contractName, currentAccount, await provider);
+   
+    setDeploying(true);
+    await deploy(contractName, await provider.getSigner());
+    setDeploying(false);
+
+    navigate('/collection/detail', {state: {
+      name: contractName
+    }});
   };
 
   const handleOnchangeFile = (file) => {
@@ -33,13 +41,12 @@ const CreateCollection = () => {
     alert(file.name);
   };
 
-  const deploy = async (contractName, deployAddr, provider) => {
+  const deploy = async (contractName, signer) => {
     const abi = await (await (await fetch(`/abis/${contractName}.json`))).json();
-    const myContract = new ethers.ContractFactory(abi.abi, abi.bytecode, provider.getSigner());
-    const contract = await myContract.deploy();
-    alert(`contract address: ${contract.address}`);
-    var balance = await provider.getBalance(currentAccount);
-    alert(ethers.utils.formatEther(balance));
+    const factory = new ethers.ContractFactory(abi.abi, abi.bytecode, signer);
+    const contract = await factory.deploy();
+    await contract.deployTransaction.wait()
+    return contract;
   };
 
   return (
@@ -165,8 +172,8 @@ const CreateCollection = () => {
           <CssBaseline></CssBaseline>
           <br></br>
           <br></br>
-          <Button type="submit" variant="contained">
-            Create Collection
+          <Button type="submit" variant= { deploying?  "text": "contained"}  >
+            {deploying? <CircularProgress /> :<>Create Collection</> }
           </Button>
         </Box>
       )}

@@ -92,11 +92,11 @@ const NavBar = () => {
           />
         </Search>
 
-        <Link href="explore" underline="none" variant="button" mr={2} ml={4}>
+        <Link href="/explore" underline="none" variant="button" mr={2} ml={4}>
           Exlore
         </Link>
         {connected && (
-          <Link href="create-collection" underline="none" variant="button">
+          <Link href="/create-collection" underline="none" variant="button">
             Create
           </Link>
         )}

@@ -12,6 +12,7 @@ import {
 import CreateCollection from './pages/CreateCollection/CreateCollection';
 import Advertise from './pages/Advertise/Advertise';
 import Collection from './pages/Explore/Collections/Collection';
+import { CollectionDetail } from './pages/CreateCollection/CollectionDetail';
 
 import { Web3ContextProvider } from "./store/Web3Provider";
 import { Web3ReactProvider } from "@web3-react/core";
@@ -33,6 +34,7 @@ function MainPage() {
         <Route index element = {<Advertise/>}/>
         <Route path='create-collection' element = {<CreateCollection/>}/>
         <Route path='explore' element = {<Collection/>}/>
+        <Route path='collection/detail' element = {<CollectionDetail/>}/>
       </Route>
     </Routes>
     </BrowserRouter>
