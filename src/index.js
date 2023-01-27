@@ -34,7 +34,6 @@ function MainPage() {
         <Route path='create-collection' element = {<CreateCollection/>}/>
         <Route path='explore' element = {<Collection/>}/>
       </Route>
-      
     </Routes>
     </BrowserRouter>
     </Web3ContextProvider>

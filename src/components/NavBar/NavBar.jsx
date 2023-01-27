@@ -11,6 +11,7 @@ import HomeWorkIcon from "@mui/icons-material/HomeWork";
 
 import { WalletWidget } from "./WalletWidget";
 import { useEffect, useState } from "react";
+import { useWeb3Context } from "../../hooks/useWeb3Context";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,6 +65,8 @@ const NavBar = () => {
     // }
   });
 
+  const { connected } = useWeb3Context();
+
   return (
     <AppBar
       sx={{
@@ -92,9 +95,11 @@ const NavBar = () => {
         <Link href="explore" underline="none" variant="button" mr={2} ml={4}>
           Exlore
         </Link>
-        <Link href="create-collection" underline="none" variant="button">
-          Create
-        </Link>
+        {connected && (
+          <Link href="create-collection" underline="none" variant="button">
+            Create
+          </Link>
+        )}
 
         <Box sx={{ flexGrow: 1 }} />
 
