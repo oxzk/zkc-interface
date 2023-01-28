@@ -25,6 +25,7 @@ import React, { useState } from "react";
 import { WalletModal } from "../ConnectWalletButton/WalletModal";
 import { useWeb3Context } from "../../hooks/useWeb3Context";
 import makeBlockie from "ethereum-blockies-base64";
+import { Stack } from "@mui/system";
 
 export const WalletWidget = ({ open, setOpen }) => {
   const setWalletModalOpen = useRootStore((state) => state.setWalletModalOpen);
@@ -215,6 +216,17 @@ export const WalletWidget = ({ open, setOpen }) => {
         </Box>
       }
       <Divider
+        sx={{
+          my: { xs: 7, md: 0 },
+          borderColor: { xs: "#FFFFFF1F", md: "divider" },
+        }}
+      />
+    <Stack direction="column">
+        {/* <Typography>
+            Profile
+        </Typography> */}
+    </Stack>
+     <Divider
         sx={{
           my: { xs: 7, md: 0 },
           borderColor: { xs: "#FFFFFF1F", md: "divider" },
