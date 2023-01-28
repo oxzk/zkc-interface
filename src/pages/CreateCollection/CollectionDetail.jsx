@@ -25,19 +25,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import { NFTCard } from "../../components/NFT/NFTCard";
-
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 const Description = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -136,7 +128,6 @@ const NFTGallery = (props) => {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -180,7 +171,7 @@ const NFTGallery = (props) => {
       >
       </Drawer>
 
-      <Grid container rowSpacing={2} columnSpacing={2} py={2}>
+      <Grid container rowSpacing={2} columnSpacing={2} py={2} columns={15}>
         {[...Array(length).keys()].map((i) => (
           <Grid display="flex" item>
             <NFTCard key={i}></NFTCard>

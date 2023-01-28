@@ -24,8 +24,8 @@ export const NFTCard = () => {
         <CardActionArea>
           <CardMedia
             component="img"
-            height={277.25}
-            width={277.25}
+            height={250}
+            width={250}
             image={NFT.img}
             alt={NFT.name + "-" + NFT.id}
           />

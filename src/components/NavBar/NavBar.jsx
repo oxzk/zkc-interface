@@ -5,9 +5,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Box } from "@mui/system";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
-import { AppBar, IconButton, useMediaQuery } from "@mui/material";
+import { AppBar, IconButton, Typography, useMediaQuery } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import SecurityIcon from '@mui/icons-material/Security';
 
 import { WalletWidget } from "./WalletWidget";
 import { useEffect, useState } from "react";
@@ -80,7 +80,8 @@ const NavBar = () => {
             navigate("/");
           }}
         >
-          <HomeWorkIcon></HomeWorkIcon>zkCredential
+          <SecurityIcon color="primary" fontSize="large"></SecurityIcon>
+          <Typography variant="h6" color="primary">zkCredential</Typography> 
         </IconButton>
         <Search>
           <SearchIconWrapper>

@@ -17,6 +17,7 @@ import { CollectionDetail } from './pages/CreateCollection/CollectionDetail';
 import { Web3ContextProvider } from "./store/Web3Provider";
 import { Web3ReactProvider } from "@web3-react/core";
 import { providers } from 'ethers';
+import { CreateNFT } from './pages/NFT/Create';
 
 const getWeb3Library = (provider) =>  {
   const library = new providers.Web3Provider(provider);
@@ -35,6 +36,7 @@ function MainPage() {
         <Route path='create-collection' element = {<CreateCollection/>}/>
         <Route path='explore' element = {<Collection/>}/>
         <Route path='collection/detail' element = {<CollectionDetail/>}/>
+        <Route path='nft/create' element = {<CreateNFT/>}/>
       </Route>
     </Routes>
     </BrowserRouter>

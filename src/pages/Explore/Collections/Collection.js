@@ -1,9 +1,9 @@
-import Card from "@mui/material/Card";
 import {
   Box,
   CardActionArea,
   CardContent,
   CardMedia,
+  Card,
   Typography,
 } from "@mui/material";
 
@@ -11,11 +11,16 @@ import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/system";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { useNavigate } from "react-router-dom";
 
 const NFTCollection = () => {
+  const navigate = useNavigate();
+
   return (
     <Card x={{ maxWidth: 384 }}>
-      <CardActionArea>
+      <CardActionArea onClick = {()=> {
+         navigate("/collection/detail"); // TODO: add parameters
+      }}>
         <CardMedia
           component="img"
           height="215px"

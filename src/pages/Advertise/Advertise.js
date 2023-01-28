@@ -4,11 +4,13 @@ import Button from "@mui/material/Button";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import * as React from "react";
 import BannerStepper from "./BannerStepper";
 
 const LeftPage = () => {
+  const navigate = useNavigate();
   return (
     <Card
       elevation={0}
@@ -32,7 +34,9 @@ const LeftPage = () => {
         <Button
           variant="contained"
           size="large"
-          bgcolor="theme.palette.primary.dark"
+          onClick={() => {
+            navigate("/explore")
+          }}
         >
           Explore
         </Button>

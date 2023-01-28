@@ -18,6 +18,9 @@ import {
 
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PersonIcon from "@mui/icons-material/Person";
+import EditIcon from '@mui/icons-material/Edit';
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import FmdBadIcon from "@mui/icons-material/FmdBad";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -32,11 +35,11 @@ export const WalletWidget = ({ open, setOpen }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [useBlockie, setUseBlockie] = useState(false);
 
+
   const {
     disconnectWallet,
     currentAccount,
     connected,
-    chainId,
     loading,
     watchModeOnlyAddress,
   } = useWeb3Context();
@@ -81,6 +84,23 @@ export const WalletWidget = ({ open, setOpen }) => {
       str.length - to,
       str.length
     )}`;
+  };
+
+  const ProfileList = () => {
+    return (
+      <Box padding={2}>
+        <Stack
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          spacing={0.5}
+        >
+          <Button startIcon={<PersonIcon></PersonIcon>}>Profile</Button>
+          <Button startIcon={<CreateNewFolderIcon></CreateNewFolderIcon>} href="/create-collection">Create Collection</Button>
+          <Button startIcon={<EditIcon></EditIcon>} href="/nft/create">Create NFT</Button>
+        </Stack>
+      </Box>
+    );
   };
 
   const accountAvatar = (
@@ -221,12 +241,10 @@ export const WalletWidget = ({ open, setOpen }) => {
           borderColor: { xs: "#FFFFFF1F", md: "divider" },
         }}
       />
-    <Stack direction="column">
-        {/* <Typography>
-            Profile
-        </Typography> */}
-    </Stack>
-     <Divider
+
+      <ProfileList></ProfileList>
+
+      <Divider
         sx={{
           my: { xs: 7, md: 0 },
           borderColor: { xs: "#FFFFFF1F", md: "divider" },
@@ -378,7 +396,7 @@ export const WalletWidget = ({ open, setOpen }) => {
           <Content component={MenuItem} />
         </MenuList>
       </Menu>
-      )<WalletModal></WalletModal>
+      <WalletModal></WalletModal>
     </>
   );
 };
