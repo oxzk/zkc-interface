@@ -64,7 +64,7 @@ const Collection = () => {
     // >
     <Box
       sx={{
-        py: 12,
+        py: 2,
         ml: 12,
         mr: 12,
       }}

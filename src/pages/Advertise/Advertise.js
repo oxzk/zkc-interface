@@ -35,7 +35,7 @@ const LeftPage = () => {
           variant="contained"
           size="large"
           onClick={() => {
-            navigate("/explore")
+            Navigator.navigate("/explore")
           }}
         >
           Explore
@@ -51,7 +51,7 @@ const RightPage = () => {
 
 const Advertise = () => {
   return (
-    <Container sx={{ py: 12 }}>
+    <Container sx={{ py: 5 }}>
       <Grid
         container
         direction="row"

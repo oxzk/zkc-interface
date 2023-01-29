@@ -19,13 +19,11 @@ export const NFTCard = () => {
     }
 
   return (
-    <>
-      <Card sx={{ maxWidth: 277.25 }}>
+      <Card sx={{ maxWidth: 350 }}>
         <CardActionArea>
           <CardMedia
             component="img"
             height={250}
-            width={250}
             image={NFT.img}
             alt={NFT.name + "-" + NFT.id}
           />
@@ -39,6 +37,5 @@ export const NFTCard = () => {
           </CardContent>
         </CardActionArea>
       </Card>
-    </>
   );
 };

@@ -8,7 +8,7 @@ export const CreateNFT = () => {
         }}
       >
 
-        <Typography variant="h1" py={12}>
+        <Typography variant="h1" py={2}>
             Create NFT
         </Typography>
 

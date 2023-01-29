@@ -61,7 +61,7 @@ const CreateCollection = () => {
           noValidate
           onSubmit={handleSubmit}
           sx={{
-            py: 24,
+            py: 2,
           }}
         >
           <Typography variant="h4" gutterBottom>

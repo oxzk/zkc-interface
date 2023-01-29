@@ -11,7 +11,6 @@ import {
   AccordionDetails,
   Toolbar,
   InputBase,
-  Divider,
   Drawer,
   Paper,
 } from "@mui/material";
@@ -160,24 +159,31 @@ const NFTGallery = (props) => {
         sx={{
           width: 240,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: 240,
-            boxSizing: 'border-box',
+            boxSizing: "border-box",
           },
         }}
         variant="persistent"
         anchor="left"
         open={open}
+      ></Drawer>
+ 
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        rowSpacing={2}
+        columnSpacing={2}
+        columns={15}
       >
-      </Drawer>
-
-      <Grid container rowSpacing={2} columnSpacing={2} py={2} columns={15}>
         {[...Array(length).keys()].map((i) => (
-          <Grid display="flex" item>
+          <Grid display="flex" item xs={3}>
             <NFTCard key={i}></NFTCard>
           </Grid>
         ))}
       </Grid>
+      
     </>
   );
 };
@@ -188,9 +194,10 @@ export const CollectionDetail = () => {
     "https://i.seadn.io/gae/O0XkiR_Z2--OPa_RA6FhXrR16yBOgIJqSLdHTGA0-LAhyzjSYcb3WEPaCYZHeh19JIUEAUazofVKXcY2qOylWCdoeBN6IfGZLJ3I4A?auto=format&w=3840";
 
   return (
-    <Box sx={{ py: 10 }}>
+    <Box sx={{ py: 2 }}>
       {/* {alert("hello" + location.state.name)} */}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent="center"
+              alignItems="center">
         <Grid item xs={12}>
           <Card
             sx={{
@@ -247,10 +254,12 @@ export const CollectionDetail = () => {
           </Grid>
 
           <Grid item xs={12}>
-            <NFTGallery></NFTGallery>
+          <NFTGallery></NFTGallery>
           </Grid>
         </Box>
       </Grid>
+
+     
     </Box>
   );
 };
