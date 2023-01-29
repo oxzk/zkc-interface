@@ -361,6 +361,7 @@ export const WalletWidget = ({ open, setOpen }) => {
           onClick={handleClick}
           sx={{
             p: connected ? "5px 8px" : undefined,
+            mr:1,
             //   minWidth: hideWalletAccountText ? 'unset' : undefined,
           }}
           startIcon={connected && accountAvatar}

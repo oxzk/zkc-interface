@@ -35,7 +35,7 @@ const LeftPage = () => {
           variant="contained"
           size="large"
           onClick={() => {
-            Navigator.navigate("/explore")
+            navigate("/explore")
           }}
         >
           Explore

@@ -69,7 +69,7 @@ const CreateCollection = () => {
           </Typography>
 
           <Typography variant="subtitle1" gutterBottom>
-            LogoImage *
+            Logo Image *
           </Typography>
           <Typography variant="body2" gutterBottom>
             This image will also be used for navigation 350 * 350 recommended.
@@ -110,7 +110,7 @@ const CreateCollection = () => {
 
           <Box
             sx={{
-              width: "1400px",
+              width: "1200px",
             }}
           >
             <Upload descriptionText="1400 * 350 recommended"></Upload>

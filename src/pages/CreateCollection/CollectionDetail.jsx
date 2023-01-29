@@ -35,39 +35,37 @@ const Description = () => {
   };
 
   return (
-    <>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-        sx={{
-          maxWidth: "50%",
-          boxShadow: "none",
-        }}
+    <Accordion
+      elevation={12}
+      expanded={expanded === "panel1"}
+      onChange={handleChange("panel1")}
+      sx={{
+        maxWidth: "50%",
+        boxShadow: "none",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1bh-content"
+        id="panel1bh-header"
       >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography variant="subtitle1" gutterBottom>
-            Take the red bean to join the garden. View the collection at &nbsp;{" "}
-            <a href="https://azuki.com/gallery">azuki.com/gallery</a>. ...
-          </Typography>
-        </AccordionSummary>
+        <Typography variant="subtitle1" gutterBottom>
+          Take the red bean to join the garden. View the collection at &nbsp;
+          <a href="https://azuki.com/gallery">azuki.com/gallery</a>. ...
+        </Typography>
+      </AccordionSummary>
 
-        <AccordionDetails>
-          <Typography variant="body1" gutterBottom>
-            Azuki starts with a collection of 10,000 avatars that give you
-            membership access to The Garden: a corner of the internet where
-            artists, builders, and web3 enthusiasts meet to create a
-            decentralized future. Azuki holders receive access to exclusive
-            drops, experiences, and more. Visit &nbsp;{" "}
-            <a href="https://azuki.com">azuki.com</a>. for more details.We rise
-            together. We build together. We grow together.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </>
+      <AccordionDetails>
+        <Typography variant="body1" gutterBottom>
+          Azuki starts with a collection of 10,000 avatars that give you
+          membership access to The Garden: a corner of the internet where
+          artists, builders, and web3 enthusiasts meet to create a decentralized
+          future. Azuki holders receive access to exclusive drops, experiences,
+          and more. Visit &nbsp; <a href="https://azuki.com">azuki.com</a>. for
+          more details.We rise together. We build together. We grow together.
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
@@ -117,7 +115,12 @@ const NFTGallery = (props) => {
   };
 
   return (
-    <>
+    <Box
+      sx={{
+        paddingLeft: 3,
+        paddingRight: 3,
+      }}
+    >
       <AppBar
         position="relative"
         color="transparent"
@@ -168,23 +171,22 @@ const NFTGallery = (props) => {
         anchor="left"
         open={open}
       ></Drawer>
- 
+
       <Grid
         container
         justifyContent="center"
         alignItems="center"
         rowSpacing={2}
         columnSpacing={2}
-        columns={15}
+        columns={{ xs: 4, sm: 8, md: 12, lg: 15, xl: 21 }}
       >
         {[...Array(length).keys()].map((i) => (
-          <Grid display="flex" item xs={3}>
+          <Grid item xs={4} sm={4} md={4} lg={3} xl={3}>
             <NFTCard key={i}></NFTCard>
           </Grid>
         ))}
       </Grid>
-      
-    </>
+    </Box>
   );
 };
 
@@ -196,8 +198,7 @@ export const CollectionDetail = () => {
   return (
     <Box sx={{ py: 2 }}>
       {/* {alert("hello" + location.state.name)} */}
-      <Grid container spacing={2} justifyContent="center"
-              alignItems="center">
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12}>
           <Card
             sx={{
@@ -214,7 +215,9 @@ export const CollectionDetail = () => {
         </Grid>
         <Box
           sx={{
-            padding: 5,
+            paddingLeft: 5,
+            paddingRight: 5,
+            paddingTop: 2,
           }}
         >
           <Grid item xs={12}>
@@ -252,14 +255,10 @@ export const CollectionDetail = () => {
           <Grid item xs={12}>
             <Description></Description>
           </Grid>
-
-          <Grid item xs={12}>
-          <NFTGallery></NFTGallery>
-          </Grid>
         </Box>
       </Grid>
 
-     
+      <NFTGallery></NFTGallery>
     </Box>
   );
 };
