@@ -52,7 +52,7 @@ const CreateCollection = () => {
   return (
     <Container
       sx={{
-        maxWidth: "lg",
+        maxWidth: "md",
       }}
     >
       {connected && (
@@ -61,10 +61,10 @@ const CreateCollection = () => {
           noValidate
           onSubmit={handleSubmit}
           sx={{
-            py: 2,
+            py: 8,
           }}
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h3" gutterBottom>
             Create a Collection
           </Typography>
 

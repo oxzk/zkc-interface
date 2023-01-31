@@ -4,6 +4,7 @@ const desc = 'The First Digital Trading Card by President Trump.Are you ready to
 
 export const useCollectionInfo = (uid, contractName, contractAddr) => {
     // TODO: query collection from db;
+    
     return new CollectionInfo(
         contractName, 
         contractAddr, 

@@ -174,7 +174,7 @@ const NFTGallery = (props) => {
 
       <Grid
         container
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
         rowSpacing={2}
         columnSpacing={2}
